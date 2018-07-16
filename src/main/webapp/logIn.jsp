@@ -11,6 +11,10 @@
     <title></title>
 </head>
 <body>
-    <p> <a href="Account/login">登陆</a> </p>
+    <form action="Account/login" method="post">
+        <p>账号：<input type="text" name="loginId"> ${msg0} </p>
+        <P>密码：<input type="password" name="loginPwd"> ${msg1} </P>
+        <p> <input type="submit" value="登陆"></p>
+    </form>
 </body>
 </html>

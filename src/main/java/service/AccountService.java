@@ -33,17 +33,21 @@ public class AccountService {
      * 当查询到的信息
      * @param loginId 登陆账号，传入dao接口中查询信息
      * @param loginPwd 登陆密码，与查询到的信息进行匹配
+     * @param message 带回给controller信息的反馈；
+     *                "0"即表示账号错误查询不到信息；"1"即表示密码错误;"2"即表示账号及密码正确
      * @return 账号正确时：密码正确即返回给controller正确的信息，密码错误即返回一个空；账号错误，即返回空
      */
-    public Account login(String loginId, String loginPwd) {
+    public Account login(String loginId, String loginPwd, StringBuffer message) {
         Account account = accountDao.logIn(loginId);
-
         if (account == null) {
+            message.append("0");
             return null;
         } else {
             if (loginPwd.equals(account.getLoginPwd())) {
+                message.append("2");
                 return account;
             } else {
+                message.append("1");
                 return null;
             }
         }
