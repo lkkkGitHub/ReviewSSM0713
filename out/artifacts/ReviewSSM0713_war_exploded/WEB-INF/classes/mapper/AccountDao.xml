@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.AccountDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="pojo.Account">
+        <result column="accountId" property="accountId"/>
+        <result column="loginId" property="loginId"/>
+        <result column="loginPwd" property="loginPwd"/>
+        <result column="type" property="type"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `accountId`,
+        `loginId`,
+        `loginPwd`,
+        `type`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.accountId">
+        INSERT INTO account (
+            `accountId`,
+            `loginId`,
+            `loginPwd`,
+            `type`
+        ) VALUES (
+            #{pojo.accountId},
+            #{pojo.loginId},
+            #{pojo.loginPwd},
+            #{pojo.type}
+        )
+    </insert>
+
+</mapper>
+
