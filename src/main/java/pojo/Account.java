@@ -7,7 +7,7 @@ public class Account {
     /**
      * 账号表 主键 id自增
      */
-    private long accountId;
+    private int accountId;
     /**
      * 登陆账号
      */
@@ -19,14 +19,14 @@ public class Account {
     /**
      * 用户角色识别标志  1 为学生  2 为老师
      */
-    private long type;
+    private int type;
 
     /**
      * 获取账号主键
      *
      * @return 账号主键
      */
-    public long getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 
@@ -35,7 +35,7 @@ public class Account {
      *
      * @param accountId 传入主键id
      */
-    public void setAccountId(long accountId) {
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
 
@@ -80,7 +80,7 @@ public class Account {
      *
      * @return 角色识别标记
      */
-    public long getType() {
+    public int getType() {
         return type;
     }
 
@@ -89,7 +89,7 @@ public class Account {
      *
      * @param type 传入标记
      */
-    public void setType(long type) {
+    public void setType(int type) {
         this.type = type;
     }
 
