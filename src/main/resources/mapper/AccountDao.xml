@@ -32,5 +32,9 @@
         )
     </insert>
 
+    <!--登陆查询   传入登陆账户的账号，将查询到的信息返回到resultMap中-->
+    <select id="logIn" parameterType="java.lang.String" resultMap="AllColumnMap">
+        SELECT * FROM account WHERE loginId = #{values}
+    </select>
 </mapper>
 

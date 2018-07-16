@@ -14,4 +14,11 @@ public interface AccountDao {
      * @return 返回一个自增主键
      */
     int insert(@Param("pojo") Account pojo);
+
+    /**
+     * 登陆查询
+     * @param loginId 账户账号id
+     * @return 将查询到的信息传入到Account类中
+     */
+    Account logIn(String loginId);
 }
