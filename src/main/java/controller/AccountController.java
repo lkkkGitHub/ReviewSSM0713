@@ -10,6 +10,7 @@ import pojo.Account;
 import service.AccountService;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -45,12 +46,13 @@ public class AccountController {
      * @param check0   页面记住账号单选按钮，为yes时记住账号，无论何时都记住账号；记住信息就是将信息存入到cookie中
      * @param check1   页面记住密码单选按钮，为yes时记住密码，仅当点击了记住账号且账号正确，密码正确时；记住信息原理同上
      * @param response response对象，向页面添加cookie值
+     * @param request request对象，向服务器端session中存储用户账号数据
      * @return 返回页面，根据service返回的信息不同，返回到的页面不同
      */
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
     public ModelAndView login(String loginId, String loginPwd,
                               Model model, String check0, String check1,
-                              HttpServletResponse response) {
+                              HttpServletResponse response, HttpServletRequest request) {
         //从controller传入到service中，service根据查询到的信息进行赋值
         StringBuffer message = new StringBuffer();
         Account account = service.login(loginId, loginPwd, message);
@@ -75,6 +77,8 @@ public class AccountController {
                 return new ModelAndView("logIn");
             }
         } else {
+            //将用户账号信息存入session中，方便之后通过session来调用用户信息
+            request.getSession().setAttribute("sessionAccount", account);
             if ("yes".equals(check0)) {
                 if ("yes".equals(check1)) {
                     response.addCookie(cookie1);

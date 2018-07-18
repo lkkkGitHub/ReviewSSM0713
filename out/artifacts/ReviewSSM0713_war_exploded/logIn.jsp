@@ -12,8 +12,15 @@
 </head>
 <body>
     <form action="Account/login" method="post">
-        <p>账号：<input type="text" name="loginId"> ${msg0} </p>
-        <P>密码：<input type="password" name="loginPwd"> ${msg1} </P>
+        <p>账号：<input type="text" name="loginId" value="${cookie.cookieId.value}">
+            <span style="color: red">${msg0}</span>
+        </p>
+        <P>密码：<input type="password" name="loginPwd" value="${cookie.cookiePwd.value}">
+            <span style="color: red">${msg1}</span>
+        </P>
+        <p><input type="checkbox" value="yes" name="check0">记住账号
+            <input type="checkbox" value="yes" name="check1">记住密码
+        </p>
         <p> <input type="submit" value="登陆"></p>
     </form>
 </body>

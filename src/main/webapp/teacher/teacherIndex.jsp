@@ -11,6 +11,6 @@
     <title></title>
 </head>
 <body>
-teacher
+teacher:${sessionScope.sessionAccount.loginId}
 </body>
 </html>
