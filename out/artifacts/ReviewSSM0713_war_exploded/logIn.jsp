@@ -12,14 +12,19 @@
 </head>
 <body>
     <form action="Account/login" method="post">
-        <p>账号：<input type="text" name="loginId" value="${cookie.cookieId.value}">
-            <span style="color: red">${msg0}</span>
+        <p>账&nbsp&nbsp&nbsp&nbsp号：<input type="text" name="loginId" value="${cookie.cookieId.value}">
+            <span style="color: red">${msgId}</span>
         </p>
-        <P>密码：<input type="password" name="loginPwd" value="${cookie.cookiePwd.value}">
-            <span style="color: red">${msg1}</span>
+        <P>密&nbsp&nbsp&nbsp&nbsp码：<input type="password" name="loginPwd" value="${cookie.cookiePwd.value}">
+            <span style="color: red">${msgPwd}</span>
         </P>
-        <p><input type="checkbox" value="yes" name="check0">记住账号
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="checkbox" value="yes" name="check0">记住账号
             <input type="checkbox" value="yes" name="check1">记住密码
+        </p>
+        <p>验证码:<img src="Account/setPicture">
+            <input type="text" name="code" style="width: 85px">
+            <span style="color: red">${msgCode}</span>
         </p>
         <p> <input type="submit" value="登陆"></p>
     </form>
