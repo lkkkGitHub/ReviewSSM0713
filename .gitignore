@@ -3,9 +3,9 @@
 .classpath
 .project
 
-.settings     
-
- ##filter databfile¡¢sln file##
+.settings
+firestorm.log
+ ##filter databfileï¿½ï¿½sln file##
 *.mdb  
 *.ldb  
 *.sln    
