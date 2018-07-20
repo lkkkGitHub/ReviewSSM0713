@@ -30,6 +30,7 @@ public class AccountController {
 
     /**
      * get方法，跳转到登陆界面
+     *
      * @return 返回一个携带页面名称的ModelAndView对象
      */
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
@@ -39,7 +40,8 @@ public class AccountController {
 
     /**
      * 生成图片验证码，传入到页面，同时添加到session中
-     * @param request 获取session对象
+     *
+     * @param request  获取session对象
      * @param response 向页面发送图片验证码
      */
     @RequestMapping("/setPicture")
@@ -61,14 +63,15 @@ public class AccountController {
     /**
      * 登陆post方法，将页面填写的数据传入到service中；同时根据service的返回信息跳转到相应的页面
      * 同时变量名后缀  带0的和账号有关   1和密码有关
+     *
      * @param loginId  页面用户填写的账号，controller将值传入service中进行查询匹配
      * @param loginPwd 页面用户填写的密码，同上
      * @param model    框架中自带参数，将错误信息带入到页面
      * @param check0   页面记住账号单选按钮，为yes时记住账号，无论何时都记住账号；记住信息就是将信息存入到cookie中
      * @param check1   页面记住密码单选按钮，为yes时记住密码，仅当点击了记住账号且账号正确，密码正确时；记住信息原理同上
      * @param response response对象，向页面添加cookie值
-     * @param request request对象，向服务器端session中存储用户账号数据
-     * @param code 用户输入的图片验证码
+     * @param request  request对象，向服务器端session中存储用户账号数据
+     * @param code     用户输入的图片验证码
      * @return 返回页面，根据service返回的信息不同，返回到的页面不同
      */
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
@@ -77,7 +80,7 @@ public class AccountController {
                               HttpServletResponse response, HttpServletRequest request) {
         //msg将错误信息反馈给登陆界面
         String msg;
-            if (code.equals(request.getSession().getAttribute("SessionPictures"))) {
+        if ((code.toUpperCase()).equals(request.getSession().getAttribute("SessionPictures"))) {
             //      将cookie值存在时间设置为20s是为了之后测试方便
             final int maxTimeCookie = 20;
             //从controller传入到service中，service根据查询到的信息进行赋值
@@ -115,10 +118,26 @@ public class AccountController {
                     return new ModelAndView("teacher/teacherIndex");
                 }
             }
-        } else {
+        } else if (code == null) {
             msg = "请输入验证码";
             model.addAttribute("msgCode", msg);
             return new ModelAndView("logIn");
+        } else {
+            msg = "验证码错误";
+            model.addAttribute("msgCode", msg);
+            return new ModelAndView("logIn");
         }
+    }
+
+    /**
+     * 用户注销登陆，清除session中存储的账户信息
+     *
+     * @param request 获取session对象
+     * @return 返回到主页
+     */
+    @RequestMapping("/exit")
+    public ModelAndView exit(HttpServletRequest request) {
+        request.getSession().removeAttribute("sessionAccount");
+        return new ModelAndView("index");
     }
 }
