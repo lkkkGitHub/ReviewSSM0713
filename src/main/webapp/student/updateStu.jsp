@@ -27,7 +27,7 @@
             </c:otherwise>
         </c:choose>
     </p>
-    <p><input type="submit" value="提交"></p>
+    <p><input type="submit" value="提交"><a href="studentIndex.jsp">返回首页</a></p>
 </form>
 <p></p>
 </body>
