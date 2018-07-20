@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.StudentDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="pojo.Student">
+        <result column="studentId" property="studentId"/>
+        <result column="accountId" property="accountId"/>
+        <result column="studentName" property="studentName"/>
+        <result column="studentAge" property="studentAge"/>
+        <result column="studentSex" property="studentSex"/>
+    </resultMap>
+    
+    <resultMap id="StuClass" type="pojo.Student" extends="AllColumnMap">
+        <association column="classId" property="aClass" select="mapper.ClassDao.findStuClass" />
+    </resultMap>
+
+    <select id="findStuInfo" parameterType="java.lang.Integer" resultMap="StuClass">
+        SELECT * FROM student WHERE accountId = #{values}
+    </select>
+
+    <update id="updateStu" parameterType="pojo.Student">
+        update student
+        <set>
+            <if test="studentName != null">
+                studentName = #{studentName},
+            </if>
+            <if test="studentAge != 0">
+                studentAge = #{studentAge},
+            </if>
+            <if test="studentSex != null">
+                studentSex = #{studentSex}
+            </if>
+        </set>
+        where studentId = #{studentId}
+    </update>
+</mapper>
+

@@ -1,10 +1,16 @@
 ##ignore this file##
-/target/ 
+/target/
+/out/
 .classpath
 .project
 
+<<<<<<< HEAD
 .settings
 firestorm.log
+=======
+.settings     
+
+>>>>>>> dev
  ##filter databfile��sln file##
 *.mdb  
 *.ldb  
