@@ -18,5 +18,20 @@
         SELECT * FROM student WHERE accountId = #{values}
     </select>
 
+    <update id="updateStu" parameterType="pojo.Student">
+        update student
+        <set>
+            <if test="studentName != null">
+                studentName = #{studentName},
+            </if>
+            <if test="studentAge != 0">
+                studentAge = #{studentAge},
+            </if>
+            <if test="studentSex != null">
+                studentSex = #{studentSex}
+            </if>
+        </set>
+        where studentId = #{studentId}
+    </update>
 </mapper>
 

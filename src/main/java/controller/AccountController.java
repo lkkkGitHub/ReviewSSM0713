@@ -118,7 +118,7 @@ public class AccountController {
                     return new ModelAndView("teacher/teacherIndex");
                 }
             }
-        } else if (code == null) {
+        } else if (code == "") {
             msg = "请输入验证码";
             model.addAttribute("msgCode", msg);
             return new ModelAndView("logIn");

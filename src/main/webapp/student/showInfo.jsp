@@ -12,6 +12,6 @@
 </head>
 <body>
 <p>${student.toString()}</p>
-<p><a href="">修改学生信息</a></p>
+<p><a href="Student/updateStu">修改学生信息</a></p>
 </body>
 </html>
