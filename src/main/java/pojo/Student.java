@@ -29,6 +29,16 @@ public class Student {
      */
     private int classId;
 
+    private Class aClass;
+
+    public Class getaClass() {
+        return aClass;
+    }
+
+    public void setaClass(Class aClass) {
+        this.aClass = aClass;
+    }
+
     /**
      * 获取学生主键id
      * @return 返回主键id
@@ -133,7 +143,7 @@ public class Student {
                 ", studentName='" + studentName + '\'' +
                 ", studentAge=" + studentAge +
                 ", studentSex='" + studentSex + '\'' +
-                ", classId=" + classId +
+                ", aClass=" + aClass +
                 '}';
     }
 }
